@@ -1,0 +1,98 @@
+{ "frames": {
+   "Power_Up_KG_1 0.png": {
+    "frame": { "x": 0, "y": 0, "w": 100, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 100, "h": 64 },
+    "sourceSize": { "w": 100, "h": 64 },
+    "duration": 100
+   },
+   "Power_Up_KG_1 1.png": {
+    "frame": { "x": 100, "y": 0, "w": 100, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 100, "h": 64 },
+    "sourceSize": { "w": 100, "h": 64 },
+    "duration": 100
+   },
+   "Power_Up_KG_1 2.png": {
+    "frame": { "x": 200, "y": 0, "w": 100, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 100, "h": 64 },
+    "sourceSize": { "w": 100, "h": 64 },
+    "duration": 100
+   },
+   "Power_Up_KG_1 3.png": {
+    "frame": { "x": 300, "y": 0, "w": 100, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 100, "h": 64 },
+    "sourceSize": { "w": 100, "h": 64 },
+    "duration": 100
+   },
+   "Power_Up_KG_1 4.png": {
+    "frame": { "x": 400, "y": 0, "w": 100, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 100, "h": 64 },
+    "sourceSize": { "w": 100, "h": 64 },
+    "duration": 100
+   },
+   "Power_Up_KG_1 5.png": {
+    "frame": { "x": 500, "y": 0, "w": 100, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 100, "h": 64 },
+    "sourceSize": { "w": 100, "h": 64 },
+    "duration": 100
+   },
+   "Power_Up_KG_1 6.png": {
+    "frame": { "x": 600, "y": 0, "w": 100, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 100, "h": 64 },
+    "sourceSize": { "w": 100, "h": 64 },
+    "duration": 100
+   },
+   "Power_Up_KG_1 7.png": {
+    "frame": { "x": 700, "y": 0, "w": 100, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 100, "h": 64 },
+    "sourceSize": { "w": 100, "h": 64 },
+    "duration": 100
+   },
+   "Power_Up_KG_1 8.png": {
+    "frame": { "x": 800, "y": 0, "w": 100, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 100, "h": 64 },
+    "sourceSize": { "w": 100, "h": 64 },
+    "duration": 100
+   },
+   "Power_Up_KG_1 9.png": {
+    "frame": { "x": 900, "y": 0, "w": 100, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 100, "h": 64 },
+    "sourceSize": { "w": 100, "h": 64 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.18.1-3-gcac270ceb-dev",
+  "image": "powerup1.png",
+  "format": "RGBA8888",
+  "size": { "w": 1000, "h": 64 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "Sprite Sheet", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

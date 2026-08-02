@@ -7,13 +7,27 @@ environment:
   sdk: ^3.12.2
 
 dependencies:
+  flame: ^1.38.0
   flutter:
     sdk: flutter
+  flutter_gen: ^5.15.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
+  build_runner: ^2.15.1
+  flutter_gen_runner: ^5.15.0
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/images/parallax/
+    - assets/sprites/effects/fire/
+    - assets/sprites/effects/ice/
+    - assets/sprites/effects/wind/
+    - assets/sprites/effects/thunder/
+    - assets/sprites/effects/water/
+    - assets/sprites/effects/buff1/
+    - assets/sprites/characters/wizzard/
+    - assets/sprites/characters/knight/
