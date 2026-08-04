@@ -9,20 +9,35 @@ class AsepriteEntry {
     required this.name,
     required this.category,
     required this.jsonAssetPath,
+    this.sheetAssetPath,
     this.loop = true,
+    this.holdFirstFrame = false,
   });
 
   final String name;
   final String category;
   final String jsonAssetPath;
+
+  /// Optional PNG sheet path (with or without `assets/` prefix).
+  /// Used when Aseprite JSON omits `meta.image`.
+  final String? sheetAssetPath;
   final bool loop;
 
-  AsepriteEntry copyWith({bool? loop}) {
+  /// Use only the first sheet frame (e.g. knight idle from attack pose).
+  final bool holdFirstFrame;
+
+  AsepriteEntry copyWith({
+    bool? loop,
+    String? sheetAssetPath,
+    bool? holdFirstFrame,
+  }) {
     return AsepriteEntry(
       name: name,
       category: category,
       jsonAssetPath: jsonAssetPath,
+      sheetAssetPath: sheetAssetPath ?? this.sheetAssetPath,
       loop: loop ?? this.loop,
+      holdFirstFrame: holdFirstFrame ?? this.holdFirstFrame,
     );
   }
 }
@@ -61,12 +76,12 @@ Future<AsepriteLoadResult> loadAsepriteAnimation({
     );
   }
 
-  final meta = json['meta'] as Map<String, dynamic>;
-  final sheetFileName = meta['image'] as String;
-
-  final dir = entry.jsonAssetPath.replaceFirst('assets/', '').split('/')
-    ..removeLast();
-  final sheetPath = '${dir.join('/')}/$sheetFileName';
+  final meta = json['meta'] as Map<String, dynamic>?;
+  final sheetPath = _resolveSheetPath(
+    jsonAssetPath: entry.jsonAssetPath,
+    metaImage: meta?['image'] as String?,
+    sheetAssetPath: entry.sheetAssetPath,
+  );
 
   final sheetImage = await images.load(sheetPath);
 
@@ -92,24 +107,58 @@ Future<AsepriteLoadResult> loadAsepriteAnimation({
     );
   }
 
-  final firstFrame =
-      (framesJson.first as Map<String, dynamic>)['frame'] as Map<String, dynamic>;
+  final firstFrame = (framesJson.first as Map<String, dynamic>)['frame'] as Map<String, dynamic>;
   final frameSize = Vector2(
     (firstFrame['w'] as num).toDouble(),
     (firstFrame['h'] as num).toDouble(),
   );
+
+  final useLoop = loop ?? entry.loop;
+  final List<Sprite> animSprites;
+  final double animStep;
+  if (entry.holdFirstFrame && sprites.isNotEmpty) {
+    animSprites = [sprites.first];
+    animStep = 1.0;
+  } else {
+    animSprites = sprites;
+    animStep = stepTime;
+  }
+
   final metaText =
-      '${framesJson.length}f · '
+      '${animSprites.length}f · '
       '${frameSize.x.toInt()}×${frameSize.y.toInt()} · '
-      '${stepTime}s';
+      '${animStep}s';
 
   return AsepriteLoadResult(
     animation: SpriteAnimation.spriteList(
-      sprites,
-      stepTime: stepTime,
-      loop: loop ?? entry.loop,
+      animSprites,
+      stepTime: animStep,
+      loop: useLoop,
     ),
     meta: metaText,
     frameSize: frameSize,
+  );
+}
+
+/// Resolves sheet path relative to Flame [Images] prefix (`assets/`).
+String _resolveSheetPath({
+  required String jsonAssetPath,
+  required String? metaImage,
+  required String? sheetAssetPath,
+}) {
+  String stripAssets(String path) => path.startsWith('assets/') ? path.substring('assets/'.length) : path;
+
+  if (sheetAssetPath != null && sheetAssetPath.isNotEmpty) {
+    return stripAssets(sheetAssetPath);
+  }
+
+  if (metaImage != null && metaImage.isNotEmpty) {
+    final dir = stripAssets(jsonAssetPath).split('/')..removeLast();
+    return '${dir.join('/')}/$metaImage';
+  }
+
+  throw FormatException(
+    'Missing sheet image for $jsonAssetPath '
+    '(no meta.image and no sheetAssetPath)',
   );
 }

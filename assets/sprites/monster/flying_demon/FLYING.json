@@ -1,0 +1,49 @@
+{ "frames": {
+   "FLYING 0.png": {
+    "frame": { "x": 0, "y": 0, "w": 79, "h": 71 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 79, "h": 71 },
+    "sourceSize": { "w": 79, "h": 71 },
+    "duration": 100
+   },
+   "FLYING 1.png": {
+    "frame": { "x": 79, "y": 0, "w": 79, "h": 71 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 79, "h": 71 },
+    "sourceSize": { "w": 79, "h": 71 },
+    "duration": 100
+   },
+   "FLYING 2.png": {
+    "frame": { "x": 158, "y": 0, "w": 79, "h": 71 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 79, "h": 71 },
+    "sourceSize": { "w": 79, "h": 71 },
+    "duration": 100
+   },
+   "FLYING 3.png": {
+    "frame": { "x": 237, "y": 0, "w": 79, "h": 71 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 79, "h": 71 },
+    "sourceSize": { "w": 79, "h": 71 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.18.1-3-gcac270ceb-dev",
+  "format": "RGBA8888",
+  "size": { "w": 316, "h": 71 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "Sprite Sheet", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

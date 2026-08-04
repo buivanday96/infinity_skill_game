@@ -33,12 +33,23 @@ class HitboxInset {
 
 /// Custom local AABB + debug draw. Collision should use [absoluteHitbox].
 mixin DebugHitbox on PositionComponent {
+  /// Body hitbox AABB (inset rect used for combat spacing).
   bool get showHitbox => true;
+
+  /// Full sprite bounds — useful for comparing art vs collision.
+  bool get showCollision => showHitbox;
+
+  /// Attack / action range ring.
+  bool get showAction => showHitbox;
 
   Color get hitboxColor => const Color(0xFF69F0AE);
 
-  /// Also draw the full sprite bounds (dim) for comparison.
-  bool get showSpriteBounds => showHitbox;
+  Color get collisionColor => hitboxColor.withValues(alpha: 0.35);
+
+  /// Optional attack-range radius in local pixels (0 = hide).
+  double get debugAttackRangePx => 0;
+
+  Color get attackRangeColor => const Color(0x66FFEB3B);
 
   /// Hitbox in local component space (top-left origin).
   /// Override with [HitboxInset.toLocalRect] or any custom [Rect].
@@ -65,26 +76,52 @@ mixin DebugHitbox on PositionComponent {
   @override
   void render(Canvas canvas) {
     super.render(canvas);
-    if (!showHitbox || size.x <= 0 || size.y <= 0) return;
+    if (size.x <= 0 || size.y <= 0) return;
+    if (!showHitbox && !showCollision && !showAction) return;
 
-    if (showSpriteBounds) {
+    if (showCollision) {
       canvas.drawRect(
         Offset.zero & Size(size.x, size.y),
         Paint()
-          ..color = hitboxColor.withValues(alpha: 0.35)
+          ..color = collisionColor
           ..style = PaintingStyle.stroke
           ..strokeWidth = 1,
       );
     }
 
-    final box = localHitbox;
-    if (box.isEmpty) return;
-    canvas.drawRect(
-      box,
-      Paint()
-        ..color = hitboxColor
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = 1.5,
-    );
+    if (showHitbox) {
+      final box = localHitbox;
+      if (!box.isEmpty) {
+        canvas.drawRect(
+          box,
+          Paint()
+            ..color = hitboxColor.withValues(alpha: 0.18)
+            ..style = PaintingStyle.fill,
+        );
+        canvas.drawRect(
+          box,
+          Paint()
+            ..color = hitboxColor
+            ..style = PaintingStyle.stroke
+            ..strokeWidth = 1.5,
+        );
+      }
+    }
+
+    if (showAction) {
+      final range = debugAttackRangePx;
+      if (range > 0) {
+        // Feet / anchor sits at bottom-center of the component box.
+        final origin = Offset(size.x / 2, size.y);
+        canvas.drawCircle(
+          origin,
+          range,
+          Paint()
+            ..color = attackRangeColor
+            ..style = PaintingStyle.stroke
+            ..strokeWidth = 1.25,
+        );
+      }
+    }
   }
 }

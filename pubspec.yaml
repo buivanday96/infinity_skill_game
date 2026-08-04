@@ -11,6 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_gen: ^5.15.0
+  google_fonts: ^8.2.1
 
 dev_dependencies:
   flutter_test:
@@ -28,6 +29,46 @@ flutter:
     - assets/sprites/effects/wind/
     - assets/sprites/effects/thunder/
     - assets/sprites/effects/water/
+    - assets/sprites/effects/hit/
     - assets/sprites/effects/buff1/
+    - assets/sprites/buff/
     - assets/sprites/characters/wizzard/
     - assets/sprites/characters/knight/
+    - assets/sprites/monster/slime/
+    - assets/sprites/monster/golem/
+    - assets/sprites/monster/flying_demon/
+    - assets/icons/
+    - assets/icons/alchemy/
+    - assets/icons/arachnid/
+    - assets/icons/arcane/
+    - assets/icons/blood/
+    - assets/icons/consumable/
+    - assets/icons/crafting/
+    - assets/icons/danger/
+    - assets/icons/dark/
+    - assets/icons/earth/
+    - assets/icons/equipment/
+    - assets/icons/fire/
+    - assets/icons/holy/
+    - assets/icons/ice/
+    - assets/icons/lightning/
+    - assets/icons/loot/
+    - assets/icons/monster/
+    - assets/icons/nature/
+    - assets/icons/physical/
+    - assets/icons/poison/
+    - assets/icons/psionic/
+    - assets/icons/ranged/
+    - assets/icons/sound/
+    - assets/icons/stats/
+    - assets/icons/status/
+    - assets/icons/stealth/
+    - assets/icons/symbol/
+    - assets/icons/terrain/
+    - assets/icons/time/
+    - assets/icons/ui/
+    - assets/icons/utility/
+    - assets/icons/water/
+    - assets/icons/weather/
+    - assets/icons/wind/
+    - assets/icons/world/

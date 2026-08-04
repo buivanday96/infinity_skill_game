@@ -21,12 +21,18 @@ class $AssetsImagesGen {
 class $AssetsSpritesGen {
   const $AssetsSpritesGen();
 
+  /// Directory path: assets/sprites/buff
+  $AssetsSpritesBuffGen get buff => const $AssetsSpritesBuffGen();
+
   /// Directory path: assets/sprites/characters
   $AssetsSpritesCharactersGen get characters =>
       const $AssetsSpritesCharactersGen();
 
   /// Directory path: assets/sprites/effects
   $AssetsSpritesEffectsGen get effects => const $AssetsSpritesEffectsGen();
+
+  /// Directory path: assets/sprites/monster
+  $AssetsSpritesMonsterGen get monster => const $AssetsSpritesMonsterGen();
 }
 
 class $AssetsImagesParallaxGen {
@@ -72,6 +78,50 @@ class $AssetsImagesParallaxGen {
   ];
 }
 
+class $AssetsSpritesBuffGen {
+  const $AssetsSpritesBuffGen();
+
+  /// File path: assets/sprites/buff/buff3.json
+  String get buff3Json => 'assets/sprites/buff/buff3.json';
+
+  /// File path: assets/sprites/buff/buff3.png
+  AssetGenImage get buff3Png =>
+      const AssetGenImage('assets/sprites/buff/buff3.png');
+
+  /// File path: assets/sprites/buff/buff4.json
+  String get buff4Json => 'assets/sprites/buff/buff4.json';
+
+  /// File path: assets/sprites/buff/buff4.png
+  AssetGenImage get buff4Png =>
+      const AssetGenImage('assets/sprites/buff/buff4.png');
+
+  /// File path: assets/sprites/buff/buff5.json
+  String get buff5Json => 'assets/sprites/buff/buff5.json';
+
+  /// File path: assets/sprites/buff/buff5.png
+  AssetGenImage get buff5Png =>
+      const AssetGenImage('assets/sprites/buff/buff5.png');
+
+  /// File path: assets/sprites/buff/buff6.json
+  String get buff6Json => 'assets/sprites/buff/buff6.json';
+
+  /// File path: assets/sprites/buff/buff6.png
+  AssetGenImage get buff6Png =>
+      const AssetGenImage('assets/sprites/buff/buff6.png');
+
+  /// List of all assets
+  List<dynamic> get values => [
+    buff3Json,
+    buff3Png,
+    buff4Json,
+    buff4Png,
+    buff5Json,
+    buff5Png,
+    buff6Json,
+    buff6Png,
+  ];
+}
+
 class $AssetsSpritesCharactersGen {
   const $AssetsSpritesCharactersGen();
 
@@ -94,6 +144,9 @@ class $AssetsSpritesEffectsGen {
   /// Directory path: assets/sprites/effects/fire
   $AssetsSpritesEffectsFireGen get fire => const $AssetsSpritesEffectsFireGen();
 
+  /// Directory path: assets/sprites/effects/hit
+  $AssetsSpritesEffectsHitGen get hit => const $AssetsSpritesEffectsHitGen();
+
   /// Directory path: assets/sprites/effects/ice
   $AssetsSpritesEffectsIceGen get ice => const $AssetsSpritesEffectsIceGen();
 
@@ -107,6 +160,22 @@ class $AssetsSpritesEffectsGen {
 
   /// Directory path: assets/sprites/effects/wind
   $AssetsSpritesEffectsWindGen get wind => const $AssetsSpritesEffectsWindGen();
+}
+
+class $AssetsSpritesMonsterGen {
+  const $AssetsSpritesMonsterGen();
+
+  /// Directory path: assets/sprites/monster/flying_demon
+  $AssetsSpritesMonsterFlyingDemonGen get flyingDemon =>
+      const $AssetsSpritesMonsterFlyingDemonGen();
+
+  /// Directory path: assets/sprites/monster/golem
+  $AssetsSpritesMonsterGolemGen get golem =>
+      const $AssetsSpritesMonsterGolemGen();
+
+  /// Directory path: assets/sprites/monster/slime
+  $AssetsSpritesMonsterSlimeGen get slime =>
+      const $AssetsSpritesMonsterSlimeGen();
 }
 
 class $AssetsSpritesCharactersKnightGen {
@@ -161,6 +230,13 @@ class $AssetsSpritesCharactersKnightGen {
   AssetGenImage get powerup1Png =>
       const AssetGenImage('assets/sprites/characters/knight/powerup1.png');
 
+  /// File path: assets/sprites/characters/knight/walking.json
+  String get walkingJson => 'assets/sprites/characters/knight/walking.json';
+
+  /// File path: assets/sprites/characters/knight/walking.png
+  AssetGenImage get walkingPng =>
+      const AssetGenImage('assets/sprites/characters/knight/walking.png');
+
   /// List of all assets
   List<dynamic> get values => [
     attack1Json,
@@ -177,6 +253,8 @@ class $AssetsSpritesCharactersKnightGen {
     hurt1Png,
     powerup1Json,
     powerup1Png,
+    walkingJson,
+    walkingPng,
   ];
 }
 
@@ -318,6 +396,20 @@ class $AssetsSpritesEffectsFireGen {
     explosion2Json,
     explosion2Png,
   ];
+}
+
+class $AssetsSpritesEffectsHitGen {
+  const $AssetsSpritesEffectsHitGen();
+
+  /// File path: assets/sprites/effects/hit/hit1.json
+  String get hit1Json => 'assets/sprites/effects/hit/hit1.json';
+
+  /// File path: assets/sprites/effects/hit/hit1.png
+  AssetGenImage get hit1Png =>
+      const AssetGenImage('assets/sprites/effects/hit/hit1.png');
+
+  /// List of all assets
+  List<dynamic> get values => [hit1Json, hit1Png];
 }
 
 class $AssetsSpritesEffectsIceGen {
@@ -524,6 +616,169 @@ class $AssetsSpritesEffectsWindGen {
     hitPng,
     projectileJson,
     projectilePng,
+  ];
+}
+
+class $AssetsSpritesMonsterFlyingDemonGen {
+  const $AssetsSpritesMonsterFlyingDemonGen();
+
+  /// File path: assets/sprites/monster/flying_demon/ATTACK.json
+  String get aTTACKJson => 'assets/sprites/monster/flying_demon/ATTACK.json';
+
+  /// File path: assets/sprites/monster/flying_demon/ATTACK.png
+  AssetGenImage get aTTACKPng =>
+      const AssetGenImage('assets/sprites/monster/flying_demon/ATTACK.png');
+
+  /// File path: assets/sprites/monster/flying_demon/DEATH.json
+  String get dEATHJson => 'assets/sprites/monster/flying_demon/DEATH.json';
+
+  /// File path: assets/sprites/monster/flying_demon/DEATH.png
+  AssetGenImage get dEATHPng =>
+      const AssetGenImage('assets/sprites/monster/flying_demon/DEATH.png');
+
+  /// File path: assets/sprites/monster/flying_demon/FLYING.json
+  String get fLYINGJson => 'assets/sprites/monster/flying_demon/FLYING.json';
+
+  /// File path: assets/sprites/monster/flying_demon/FLYING.png
+  AssetGenImage get fLYINGPng =>
+      const AssetGenImage('assets/sprites/monster/flying_demon/FLYING.png');
+
+  /// File path: assets/sprites/monster/flying_demon/HURT.json
+  String get hURTJson => 'assets/sprites/monster/flying_demon/HURT.json';
+
+  /// File path: assets/sprites/monster/flying_demon/HURT.png
+  AssetGenImage get hURTPng =>
+      const AssetGenImage('assets/sprites/monster/flying_demon/HURT.png');
+
+  /// File path: assets/sprites/monster/flying_demon/IDLE.json
+  String get iDLEJson => 'assets/sprites/monster/flying_demon/IDLE.json';
+
+  /// File path: assets/sprites/monster/flying_demon/IDLE.png
+  AssetGenImage get iDLEPng =>
+      const AssetGenImage('assets/sprites/monster/flying_demon/IDLE.png');
+
+  /// File path: assets/sprites/monster/flying_demon/projectile.json
+  String get projectileJson =>
+      'assets/sprites/monster/flying_demon/projectile.json';
+
+  /// File path: assets/sprites/monster/flying_demon/projectile.png
+  AssetGenImage get projectilePng =>
+      const AssetGenImage('assets/sprites/monster/flying_demon/projectile.png');
+
+  /// List of all assets
+  List<dynamic> get values => [
+    aTTACKJson,
+    aTTACKPng,
+    dEATHJson,
+    dEATHPng,
+    fLYINGJson,
+    fLYINGPng,
+    hURTJson,
+    hURTPng,
+    iDLEJson,
+    iDLEPng,
+    projectileJson,
+    projectilePng,
+  ];
+}
+
+class $AssetsSpritesMonsterGolemGen {
+  const $AssetsSpritesMonsterGolemGen();
+
+  /// File path: assets/sprites/monster/golem/Golem_1_attack.json
+  String get golem1AttackJson =>
+      'assets/sprites/monster/golem/Golem_1_attack.json';
+
+  /// File path: assets/sprites/monster/golem/Golem_1_attack.png
+  AssetGenImage get golem1AttackPng =>
+      const AssetGenImage('assets/sprites/monster/golem/Golem_1_attack.png');
+
+  /// File path: assets/sprites/monster/golem/Golem_1_die.json
+  String get golem1DieJson => 'assets/sprites/monster/golem/Golem_1_die.json';
+
+  /// File path: assets/sprites/monster/golem/Golem_1_die.png
+  AssetGenImage get golem1DiePng =>
+      const AssetGenImage('assets/sprites/monster/golem/Golem_1_die.png');
+
+  /// File path: assets/sprites/monster/golem/Golem_1_hurt.json
+  String get golem1HurtJson => 'assets/sprites/monster/golem/Golem_1_hurt.json';
+
+  /// File path: assets/sprites/monster/golem/Golem_1_hurt.png
+  AssetGenImage get golem1HurtPng =>
+      const AssetGenImage('assets/sprites/monster/golem/Golem_1_hurt.png');
+
+  /// File path: assets/sprites/monster/golem/Golem_1_idle.json
+  String get golem1IdleJson => 'assets/sprites/monster/golem/Golem_1_idle.json';
+
+  /// File path: assets/sprites/monster/golem/Golem_1_idle.png
+  AssetGenImage get golem1IdlePng =>
+      const AssetGenImage('assets/sprites/monster/golem/Golem_1_idle.png');
+
+  /// File path: assets/sprites/monster/golem/Golem_1_walk.json
+  String get golem1WalkJson => 'assets/sprites/monster/golem/Golem_1_walk.json';
+
+  /// File path: assets/sprites/monster/golem/Golem_1_walk.png
+  AssetGenImage get golem1WalkPng =>
+      const AssetGenImage('assets/sprites/monster/golem/Golem_1_walk.png');
+
+  /// List of all assets
+  List<dynamic> get values => [
+    golem1AttackJson,
+    golem1AttackPng,
+    golem1DieJson,
+    golem1DiePng,
+    golem1HurtJson,
+    golem1HurtPng,
+    golem1IdleJson,
+    golem1IdlePng,
+    golem1WalkJson,
+    golem1WalkPng,
+  ];
+}
+
+class $AssetsSpritesMonsterSlimeGen {
+  const $AssetsSpritesMonsterSlimeGen();
+
+  /// File path: assets/sprites/monster/slime/attack01-sheet.json
+  String get attack01Sheet =>
+      'assets/sprites/monster/slime/attack01-sheet.json';
+
+  /// File path: assets/sprites/monster/slime/attack01.png
+  AssetGenImage get attack01 =>
+      const AssetGenImage('assets/sprites/monster/slime/attack01.png');
+
+  /// File path: assets/sprites/monster/slime/dead01-sheet.json
+  String get dead01SheetJson =>
+      'assets/sprites/monster/slime/dead01-sheet.json';
+
+  /// File path: assets/sprites/monster/slime/dead01-sheet.png
+  AssetGenImage get dead01SheetPng =>
+      const AssetGenImage('assets/sprites/monster/slime/dead01-sheet.png');
+
+  /// File path: assets/sprites/monster/slime/idle-sheet.json
+  String get idleSheet => 'assets/sprites/monster/slime/idle-sheet.json';
+
+  /// File path: assets/sprites/monster/slime/idle.png
+  AssetGenImage get idle =>
+      const AssetGenImage('assets/sprites/monster/slime/idle.png');
+
+  /// File path: assets/sprites/monster/slime/walk01-sheet.json
+  String get walk01Sheet => 'assets/sprites/monster/slime/walk01-sheet.json';
+
+  /// File path: assets/sprites/monster/slime/walk01.png
+  AssetGenImage get walk01 =>
+      const AssetGenImage('assets/sprites/monster/slime/walk01.png');
+
+  /// List of all assets
+  List<dynamic> get values => [
+    attack01Sheet,
+    attack01,
+    dead01SheetJson,
+    dead01SheetPng,
+    idleSheet,
+    idle,
+    walk01Sheet,
+    walk01,
   ];
 }
 
