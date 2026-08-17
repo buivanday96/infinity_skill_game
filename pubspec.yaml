@@ -24,6 +24,8 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/parallax/
+    - assets/particle/
+    - assets/aura/
     - assets/sprites/effects/fire/
     - assets/sprites/effects/ice/
     - assets/sprites/effects/wind/
