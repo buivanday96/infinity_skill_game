@@ -1,20 +1,35 @@
+import 'package:flame/flame.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'ui/skill_tree_screen.dart';
 
-Future<void> main() async {
-  runApp(const MainApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Flame.images.prefix = 'assets/';
+  
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello, World!'),
+    return MaterialApp(
+      title: 'Infinity Skill Game',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF8A8ACA),
+          brightness: Brightness.dark,
         ),
+        useMaterial3: true,
       ),
+      home: const SkillTreeScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
