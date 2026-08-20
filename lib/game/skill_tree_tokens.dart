@@ -6,7 +6,19 @@ import '../models/upgrades.dart';
 import 'node_colors.dart';
 
 /// Godot `get_token_type_color` used for milestone highlights.
-Color tokenHighlightColor(String costToken) => NodeColors.tokenTypeColor(costToken);
+Color tokenHighlightColor(String costToken) =>
+    NodeColors.tokenTypeColor(costToken);
+
+/// Godot `Tokens.get_icon` asset paths.
+String tokenIconAsset(String costToken) {
+  return switch (costToken) {
+    'advanced' => 'assets/ui/advanced_token.png',
+    'star' => 'assets/ui/star_token.png',
+    'time' => 'assets/ui/time_token.png',
+    'challenge' => 'assets/ui/challenge_token.png',
+    _ => 'assets/ui/basic_token.png',
+  };
+}
 
 int tokenBalance(SkillTreeState state, String costToken) {
   switch (costToken) {
@@ -59,11 +71,38 @@ SkillTreeState? spendTokens(
   };
 }
 
+/// Adds [amount] back to the wallet matching [costToken].
+SkillTreeState refundTokens(
+  SkillTreeState state,
+  String costToken,
+  int amount,
+) {
+  if (amount < 0) return state;
+
+  return switch (costToken) {
+    'advanced' => state.copyWith(
+      blueSquarePoints: state.blueSquarePoints + amount,
+    ),
+    'star' => state.copyWith(
+      yellowStarPoints: state.yellowStarPoints + amount,
+    ),
+    'time' => state.copyWith(
+      pinkHourglassPoints: state.pinkHourglassPoints + amount,
+    ),
+    'challenge' => state.copyWith(
+      greenCrownPoints: state.greenCrownPoints + amount,
+    ),
+    _ => state.copyWith(unspentPoints: state.unspentPoints + amount),
+  };
+}
+
 /// Godot `is_affordable_milestone` in `upgrade_node.gd`.
 bool shouldShowMilestoneHighlight({
   required UpgradeData data,
   required ActivationLevel activationLevel,
   required bool canAfford,
 }) {
-  return data.isMilestone && canAfford && activationLevel == ActivationLevel.available;
+  return data.isMilestone &&
+      canAfford &&
+      activationLevel == ActivationLevel.available;
 }

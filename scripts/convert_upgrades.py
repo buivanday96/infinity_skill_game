@@ -1,5 +1,13 @@
-import re
+"""Convert Godot upgrades.gd enums/map into Dart.
+
+Live catalog is split across lib/models/upgrade_ids.dart,
+lib/models/upgrades/*.dart, and lib/models/upgrades.dart.
+This script still emits a single map; port new entries into the
+category files instead of overwriting the merged catalog.
+"""
+
 import os
+import re
 import sys
 
 def parse_enum(text, enum_name):

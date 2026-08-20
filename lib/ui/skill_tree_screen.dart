@@ -1,11 +1,15 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../game/skill_tree_game.dart';
 import '../notifiers/skill_tree_notifier.dart';
 import '../models/upgrades.dart';
+import '../models/skill_node.dart';
+import '../models/upgrade_data.dart';
 import 'hud_overlay.dart';
+import 'smart_tooltip_positioner.dart';
 import 'upgrade_tooltip.dart';
 
 class SkillTreeScreen extends ConsumerStatefulWidget {
@@ -18,6 +22,10 @@ class SkillTreeScreen extends ConsumerStatefulWidget {
 class _SkillTreeScreenState extends ConsumerState<SkillTreeScreen> {
   late final SkillTreeGame _game;
 
+  Upgrade? _lastSelectedNodeId;
+  SkillNode? _lastSelectedNode;
+  UpgradeData? _lastSelectedData;
+
   @override
   void initState() {
     super.initState();
@@ -28,12 +36,7 @@ class _SkillTreeScreenState extends ConsumerState<SkillTreeScreen> {
   Widget build(BuildContext context) {
     // Listen to state changes and update the Flame game
     ref.listen(skillTreeProvider, (previous, next) {
-      if (previous?.nodes != next.nodes ||
-          previous?.unspentPoints != next.unspentPoints ||
-          previous?.blueSquarePoints != next.blueSquarePoints ||
-          previous?.yellowStarPoints != next.yellowStarPoints ||
-          previous?.pinkHourglassPoints != next.pinkHourglassPoints ||
-          previous?.greenCrownPoints != next.greenCrownPoints) {
+      if (previous?.nodes != next.nodes || previous?.unspentPoints != next.unspentPoints || previous?.blueSquarePoints != next.blueSquarePoints || previous?.yellowStarPoints != next.yellowStarPoints || previous?.pinkHourglassPoints != next.pinkHourglassPoints || previous?.greenCrownPoints != next.greenCrownPoints) {
         _game.updateSkillTree(next);
       }
     });
@@ -42,6 +45,14 @@ class _SkillTreeScreenState extends ConsumerState<SkillTreeScreen> {
     final selectedNodeId = state.selectedNodeId;
     final selectedNode = selectedNodeId != null ? state.nodes[selectedNodeId] : null;
     final selectedData = selectedNodeId != null ? upgradesMap[selectedNodeId] : null;
+
+    final isTooltipVisible = selectedNode != null && selectedData != null && selectedNode.activationLevel.index >= ActivationLevel.revealed.index;
+
+    if (isTooltipVisible) {
+      _lastSelectedNodeId = selectedNodeId;
+      _lastSelectedNode = selectedNode;
+      _lastSelectedData = selectedData;
+    }
 
     return Scaffold(
       backgroundColor: const Color(0xFF1A1A24),
@@ -54,22 +65,28 @@ class _SkillTreeScreenState extends ConsumerState<SkillTreeScreen> {
             bottom: 20,
             child: _SkillTreeZoomControls(game: _game),
           ),
-          if (selectedNode != null &&
-              selectedData != null &&
-              selectedNode.activationLevel.index >=
-                  ActivationLevel.revealed.index)
-            Positioned(
-              right: 32,
-              bottom: 32,
+          if (_lastSelectedNode != null && _lastSelectedData != null)
+            SmartTooltipPositioner(
+              game: _game,
+              nodeWorldPosition: _lastSelectedNode!.position,
+              nodeSize: Vector2(128, 128),
+              isTooltipVisible: isTooltipVisible,
               child: UpgradeTooltip(
-                upgrade: selectedNodeId!,
-                node: selectedNode,
-                data: selectedData,
+                upgrade: _lastSelectedNodeId!,
+                node: _lastSelectedNode!,
+                data: _lastSelectedData!,
                 onUpgrade: () {
-                  ref.read(skillTreeProvider.notifier).levelUpNode(selectedNodeId);
+                  ref.read(skillTreeProvider.notifier).levelUpNode(_lastSelectedNodeId!);
                 },
                 onRefund: () {
-                  // Implement refund logic later
+                  final keys = HardwareKeyboard.instance.logicalKeysPressed;
+                  final isShiftPressed = keys.contains(LogicalKeyboardKey.shiftLeft) || keys.contains(LogicalKeyboardKey.shiftRight);
+                  ref
+                      .read(skillTreeProvider.notifier)
+                      .refundNode(
+                        _lastSelectedNodeId!,
+                        allLevels: isShiftPressed,
+                      );
                 },
               ),
             ),

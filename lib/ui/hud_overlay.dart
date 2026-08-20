@@ -171,7 +171,7 @@ class HudOverlay extends ConsumerWidget {
             bottom: 20,
             right: 20,
             child: SizedBox(
-              width: 200,
+              width: 100,
               child: OutlinedButton(
                 onPressed: () {},
                 style: OutlinedButton.styleFrom(
@@ -180,7 +180,7 @@ class HudOverlay extends ConsumerWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  padding: const EdgeInsets.symmetric(vertical: 8),
                 ),
                 child: const Text(
                   'Defend',

@@ -426,6 +426,10 @@ class $AssetsSpritesGen {
   AssetGenImage get interestIcon =>
       const AssetGenImage('assets/sprites/interest_icon.png');
 
+  /// File path: assets/sprites/left_click.png
+  AssetGenImage get leftClick =>
+      const AssetGenImage('assets/sprites/left_click.png');
+
   /// File path: assets/sprites/level_challenge_icon.png
   AssetGenImage get levelChallengeIcon =>
       const AssetGenImage('assets/sprites/level_challenge_icon.png');
@@ -526,6 +530,10 @@ class $AssetsSpritesGen {
   /// File path: assets/sprites/rewind_icon.png
   AssetGenImage get rewindIcon =>
       const AssetGenImage('assets/sprites/rewind_icon.png');
+
+  /// File path: assets/sprites/right_click.png
+  AssetGenImage get rightClick =>
+      const AssetGenImage('assets/sprites/right_click.png');
 
   /// File path: assets/sprites/shielded_poison_icon.png
   AssetGenImage get shieldedPoisonIcon =>
@@ -735,6 +743,7 @@ class $AssetsSpritesGen {
     healthIcon,
     iceArtifactIcon,
     interestIcon,
+    leftClick,
     levelChallengeIcon,
     lightArrowsIcon,
     lightArtifactIcon,
@@ -760,6 +769,7 @@ class $AssetsSpritesGen {
     poisonStacksIcon,
     questionMarkIcon,
     rewindIcon,
+    rightClick,
     shieldedPoisonIcon,
     shockIcon,
     slowDamageBonusIcon,
@@ -789,8 +799,52 @@ class $AssetsSpritesGen {
   ];
 }
 
+class $AssetsUiGen {
+  const $AssetsUiGen();
+
+  /// File path: assets/ui/advanced_token.png
+  AssetGenImage get advancedToken =>
+      const AssetGenImage('assets/ui/advanced_token.png');
+
+  /// File path: assets/ui/basic_token.png
+  AssetGenImage get basicToken =>
+      const AssetGenImage('assets/ui/basic_token.png');
+
+  /// File path: assets/ui/challenge_token.png
+  AssetGenImage get challengeToken =>
+      const AssetGenImage('assets/ui/challenge_token.png');
+
+  /// File path: assets/ui/left_click.png
+  AssetGenImage get leftClick =>
+      const AssetGenImage('assets/ui/left_click.png');
+
+  /// File path: assets/ui/right_click.png
+  AssetGenImage get rightClick =>
+      const AssetGenImage('assets/ui/right_click.png');
+
+  /// File path: assets/ui/star_token.png
+  AssetGenImage get starToken =>
+      const AssetGenImage('assets/ui/star_token.png');
+
+  /// File path: assets/ui/time_token.png
+  AssetGenImage get timeToken =>
+      const AssetGenImage('assets/ui/time_token.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+    advancedToken,
+    basicToken,
+    challengeToken,
+    leftClick,
+    rightClick,
+    starToken,
+    timeToken,
+  ];
+}
+
 abstract final class Assets {
   static const $AssetsSpritesGen sprites = $AssetsSpritesGen();
+  static const $AssetsUiGen ui = $AssetsUiGen();
 }
 
 class AssetGenImage {

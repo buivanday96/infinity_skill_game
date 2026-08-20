@@ -30,6 +30,11 @@ class SkillTreeGame extends FlameGame
   /// Current zoom, for Flutter overlay controls.
   final ValueNotifier<double> zoomListenable = ValueNotifier(defaultZoom);
 
+  /// Notifies when the camera position or zoom changes.
+  final ValueNotifier<int> cameraUpdateNotifier = ValueNotifier(0);
+  final Vector2 _lastCamPosition = Vector2.zero();
+  double _lastCamZoom = 0;
+
   double _minZoom = 0.08;
   double _pinchStartZoom = defaultZoom;
   Rect? _treeBounds;
@@ -63,6 +68,16 @@ class SkillTreeGame extends FlameGame
     super.onGameResize(size);
     if (!isLoaded) return;
     _recalculateMinZoom();
+  }
+
+  @override
+  void update(double dt) {
+    super.update(dt);
+    if (cam.viewfinder.position != _lastCamPosition || cam.viewfinder.zoom != _lastCamZoom) {
+      _lastCamPosition.setFrom(cam.viewfinder.position);
+      _lastCamZoom = cam.viewfinder.zoom;
+      cameraUpdateNotifier.value++;
+    }
   }
 
   @override

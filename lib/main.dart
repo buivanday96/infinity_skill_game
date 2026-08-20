@@ -6,7 +6,7 @@ import 'ui/skill_tree_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Flame.images.prefix = 'assets/';
-  
+
   runApp(
     const ProviderScope(
       child: MyApp(),

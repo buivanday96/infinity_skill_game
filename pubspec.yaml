@@ -10,6 +10,7 @@ dependencies:
   flame: ^1.38.0
   flutter:
     sdk: flutter
+  flutter_animate: ^4.5.2
   flutter_gen: ^5.15.0
   flutter_riverpod: 
   freezed_annotation: 
@@ -32,4 +33,5 @@ flutter:
   uses-material-design: true
   assets:
     - assets/sprites/
+    - assets/ui/
  

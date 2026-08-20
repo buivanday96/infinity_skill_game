@@ -161,4 +161,14 @@ void main() {
       expect(spendTokens(wallet, 'star', 7), isNull);
     });
   });
+
+  group('tokenIconAsset', () {
+    test('maps each cost token to the ui sprite', () {
+      expect(tokenIconAsset('basic'), 'assets/ui/basic_token.png');
+      expect(tokenIconAsset('advanced'), 'assets/ui/advanced_token.png');
+      expect(tokenIconAsset('star'), 'assets/ui/star_token.png');
+      expect(tokenIconAsset('time'), 'assets/ui/time_token.png');
+      expect(tokenIconAsset('challenge'), 'assets/ui/challenge_token.png');
+    });
+  });
 }

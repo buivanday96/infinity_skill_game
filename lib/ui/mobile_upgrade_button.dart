@@ -29,7 +29,7 @@ class MobileUpgradeButton extends StatelessWidget {
       child: GestureDetector(
         onTap: onPressed,
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           decoration: BoxDecoration(
             color: backgroundColor,
             borderRadius: BorderRadius.circular(8),
@@ -39,15 +39,17 @@ class MobileUpgradeButton extends StatelessWidget {
             ),
           ),
           child: Row(
-            mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                label,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
+              Flexible(
+                child: Text(
+                  label,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 12,
+                  ),
                 ),
               ),
               if (showCost && !isMaxed) ...[
@@ -57,14 +59,13 @@ class MobileUpgradeButton extends StatelessWidget {
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontSize: 16,
+                    fontSize: 12,
                   ),
                 ),
                 const SizedBox(width: 4),
-                // We would load token icon here, just using a colored circle for now
                 Container(
-                  width: 16,
-                  height: 16,
+                  width: 14,
+                  height: 14,
                   decoration: BoxDecoration(
                     color: _getTokenColor(costToken),
                     shape: BoxShape.circle,

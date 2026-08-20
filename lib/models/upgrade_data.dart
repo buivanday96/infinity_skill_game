@@ -1,8 +1,8 @@
-import 'upgrades.dart';
+import 'upgrade_ids.dart';
 
 class UpgradeData {
   final int maxLevel;
-  final dynamic cost; // Can be int or Function(int)
+  final dynamic cost; // int, List<int>, or int Function(int)
   final String costToken;
   final String? iconPath;
   final ActivationLevel activationLevel;
@@ -45,7 +45,15 @@ class UpgradeData {
     }
     if (cost is int) {
       return cost as int;
-    } else if (cost is Function) {
+    }
+    if (cost is List) {
+      final table = cost as List<dynamic>;
+      if (level >= table.length) {
+        return 0;
+      }
+      return (table[level] as num).toInt();
+    }
+    if (cost is Function) {
       return (cost as Function)(level);
     }
     return 0;
